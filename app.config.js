@@ -17,7 +17,7 @@ module.exports = {
       backgroundColor: '#0B0D17',
     },
     android: {
-      package: 'com.mgplay.app', // precisa ser igual ao registrado no Play Console
+      package: process.env.APP_PACKAGE_NAME || 'com.mgplay.app', // Play Console usa com.mgplay.app; Amazon Appstore (Fire TV) usa com.mgplay.firetv via APP_PACKAGE_NAME
       versionCode: 10206,
       adaptiveIcon: {
         foregroundImage: './assets/adaptive-icon.png',

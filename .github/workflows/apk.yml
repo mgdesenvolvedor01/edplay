@@ -1,5 +1,11 @@
 name: Gerar APK (EDPLAY)
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      package_name:
+        description: 'Android package name (deixe em branco para com.mgplay.app / Play Store)'
+        required: false
+        default: ''
 permissions:
   contents: write
 jobs:
@@ -20,6 +26,7 @@ jobs:
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
           EAS_NO_VCS: "1"
+          APP_PACKAGE_NAME: ${{ github.event.inputs.package_name }}
       - uses: actions/upload-artifact@v4
         with:
           name: edplay-apk
